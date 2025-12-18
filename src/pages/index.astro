@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Mustafif | Portfolio">
+	<section id="hero">
+		<div class="hero-content">
+			<h1>Hi, I'm Mustafif.</h1>
+			<p class="tagline">Researcher, Developer, & Coffee Enthusiast.</p>
+			<p class="intro">
+				Welcome to my digital cafe. I blend code and research to create robust solutions.
+				Grab a cup and explore my work.
+			</p>
+			<a href="#projects" class="cta-button">View My Work</a>
+		</div>
+	</section>
+
+	<section id="skills">
+		<h2 class="section-title">Skills & Brewing Methods</h2>
+		<div class="skills-grid">
+			<div class="skill-card">
+				<h3>Languages</h3>
+				<ul>
+					<li>JavaScript / TypeScript</li>
+					<li>Python</li>
+					<li>Rust</li>
+					<li>Go</li>
+				</ul>
+			</div>
+			<div class="skill-card">
+				<h3>Frameworks</h3>
+				<ul>
+					<li>React / Next.js</li>
+					<li>Astro</li>
+					<li>Node.js / Bun</li>
+					<li>PyTorch</li>
+				</ul>
+			</div>
+			<div class="skill-card">
+				<h3>Tools</h3>
+				<ul>
+					<li>Git & GitHub</li>
+					<li>Docker</li>
+					<li>AWS / Cloud</li>
+					<li>Linux</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="projects">
+		<h2 class="section-title">Projects (Signature Blends)</h2>
+		<div class="projects-grid">
+			<article class="project-card">
+				<h3>Project Espresso</h3>
+				<p class="project-desc">A high-performance web application built for speed and efficiency.</p>
+				<div class="tags">
+					<span>Rust</span>
+					<span>WebAssembly</span>
+				</div>
+				<a href="#" class="project-link">View Code &rarr;</a>
+			</article>
+			<article class="project-card">
+				<h3>Latte UI Library</h3>
+				<p class="project-desc">A smooth, component-based design system for modern web apps.</p>
+				<div class="tags">
+					<span>React</span>
+					<span>Storybook</span>
+				</div>
+				<a href="#" class="project-link">View Code &rarr;</a>
+			</article>
+			<article class="project-card">
+				<h3>Cold Brew Analytics</h3>
+				<p class="project-desc">Data processing pipeline that extracts rich insights over time.</p>
+				<div class="tags">
+					<span>Python</span>
+					<span>Pandas</span>
+				</div>
+				<a href="#" class="project-link">View Code &rarr;</a>
+			</article>
+		</div>
+	</section>
+
+	<section id="publications">
+		<h2 class="section-title">Publications</h2>
+		<ul class="publication-list">
+			<li class="pub-item">
+				<span class="year">2023</span>
+				<div class="pub-details">
+					<h3>Optimizing Neural Networks for Edge Devices</h3>
+					<p>Published in <em>Journal of Computational Intelligence</em></p>
+					<a href="#">Read Paper</a>
+				</div>
+			</li>
+			<li class="pub-item">
+				<span class="year">2022</span>
+				<div class="pub-details">
+					<h3>A Comparative Study of Distributed Systems</h3>
+					<p>Presented at <em>International Conference on Software Engineering</em></p>
+					<a href="#">Read Paper</a>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<section id="research">
+		<h2 class="section-title">Future Research (What's Brewing)</h2>
+		<div class="research-content">
+			<p>
+				I am currently exploring the intersection of <strong>Artificial Intelligence</strong> and <strong>Sustainable Computing</strong>.
+				My goal is to develop algorithms that are not only powerful but also energy-efficient.
+			</p>
+			<p>
+				Interested in collaborating? <a href="mailto:contact@mustafif.com">Let's have a coffee chat.</a>
+			</p>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	/* Hero Section */
+	#hero {
+		padding: 4rem 0;
+		text-align: center;
+	}
+	.hero-content h1 {
+		font-size: 3.5rem;
+		margin-bottom: 0.5rem;
+		color: var(--coffee-dark);
+	}
+	.tagline {
+		font-size: 1.5rem;
+		color: var(--coffee-medium);
+		font-style: italic;
+		margin-bottom: 1.5rem;
+	}
+	.intro {
+		max-width: 600px;
+		margin: 0 auto 2rem auto;
+		line-height: 1.6;
+	}
+	.cta-button {
+		display: inline-block;
+		background-color: var(--coffee-dark);
+		color: var(--text-light);
+		padding: 0.8rem 1.5rem;
+		border-radius: 4px;
+		text-decoration: none;
+		font-weight: bold;
+		transition: background-color 0.2s;
+	}
+	.cta-button:hover {
+		background-color: var(--coffee-medium);
+	}
+
+	/* Skills Section */
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+	.skill-card {
+		background: var(--coffee-foam);
+		padding: 1.5rem;
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		border-top: 4px solid var(--coffee-light);
+	}
+	.skill-card h3 {
+		margin-top: 0;
+		border-bottom: 1px solid var(--coffee-cream);
+		padding-bottom: 0.5rem;
+	}
+	.skill-card ul {
+		list-style-type: none;
+		padding: 0;
+	}
+	.skill-card li {
+		padding: 0.3rem 0;
+		color: var(--coffee-dark);
+	}
+	.skill-card li::before {
+		content: "☕";
+		margin-right: 0.5rem;
+		font-size: 0.8rem;
+	}
+
+	/* Projects Section */
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	.project-card {
+		background: var(--coffee-foam);
+		padding: 1.5rem;
+		border-radius: 8px;
+		border: 1px solid var(--coffee-cream);
+		transition: transform 0.2s;
+	}
+	.project-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+	}
+	.project-desc {
+		color: var(--text-main);
+		opacity: 0.9;
+		margin-bottom: 1rem;
+	}
+	.tags {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+	.tags span {
+		background-color: var(--coffee-cream);
+		color: var(--coffee-dark);
+		padding: 0.2rem 0.6rem;
+		border-radius: 12px;
+		font-size: 0.8rem;
+		font-weight: bold;
+	}
+	.project-link {
+		color: var(--coffee-medium);
+		text-decoration: none;
+		font-weight: bold;
+	}
+	.project-link:hover {
+		text-decoration: underline;
+	}
+
+	/* Publications Section */
+	.publication-list {
+		list-style: none;
+		padding: 0;
+	}
+	.pub-item {
+		display: flex;
+		gap: 2rem;
+		margin-bottom: 1.5rem;
+		align-items: baseline;
+	}
+	.year {
+		font-family: 'Lora', serif;
+		font-weight: bold;
+		color: var(--coffee-light);
+		font-size: 1.2rem;
+		min-width: 60px;
+	}
+	.pub-details h3 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.2rem;
+	}
+	.pub-details p {
+		margin: 0 0 0.5rem 0;
+		font-style: italic;
+		color: var(--text-main);
+		opacity: 0.8;
+	}
+	.pub-details a {
+		color: var(--coffee-medium);
+		text-decoration: none;
+		font-size: 0.9rem;
+	}
+	.pub-details a:hover {
+		text-decoration: underline;
+	}
+
+	/* Research Section */
+	.research-content {
+		background-color: var(--coffee-foam);
+		padding: 2rem;
+		border-radius: 8px;
+		border-left: 5px solid var(--coffee-dark);
+	}
+	.research-content a {
+		color: var(--coffee-medium);
+		font-weight: bold;
+	}
+</style>

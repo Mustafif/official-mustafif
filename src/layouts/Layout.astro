@@ -1,0 +1,222 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Mustafif's Portfolio" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'dark') {
+				document.documentElement.setAttribute('data-theme', 'dark');
+			}
+		</script>
+	</head>
+	<body>
+		<div class="coffee-container">
+			<header>
+				<nav>
+					<a href="/" class="logo">Mustafif</a>
+					<div class="links">
+						<a href="#skills">Skills</a>
+						<a href="#projects">Projects</a>
+						<a href="#publications">Publications</a>
+						<a href="#research">Research</a>
+						<button id="theme-toggle" aria-label="Toggle theme">
+							<svg class="bean-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+								<g transform="rotate(-45 16 16)">
+									<ellipse cx="16" cy="16" rx="13" ry="9" fill="currentColor" />
+									<path d="M 5 16 C 10 12, 22 20, 27 16" stroke="var(--coffee-cream)" stroke-width="2" fill="none" stroke-linecap="round" />
+								</g>
+							</svg>
+						</button>
+					</div>
+				</nav>
+			</header>
+			<main>
+				<slot />
+			</main>
+			<footer>
+				<p>&copy; {new Date().getFullYear()} Mustafif. Brewed with code.</p>
+			</footer>
+		</div>
+		<script>
+			const handleToggleClick = () => {
+				const element = document.documentElement;
+				element.classList.add("theme-transition");
+				const isDark = element.getAttribute("data-theme") === "dark";
+				const newTheme = isDark ? "light" : "dark";
+				element.setAttribute("data-theme", newTheme);
+				localStorage.setItem("theme", newTheme);
+			}
+
+			document.getElementById("theme-toggle")?.addEventListener("click", handleToggleClick);
+		</script>
+	</body>
+</html>
+<style is:global>
+	:root {
+		/* Base Palette */
+		--base-espresso: #3b2f2f;
+		--base-medium: #6f4e37;
+		--base-light: #a67b5b;
+		--base-cream: #faf9f6;
+		--base-foam: #efebe9;
+		--base-black: #2c2c2c;
+		--base-dark-bg: #1c1917;
+		--base-dark-surface: #292524;
+
+		/* Light Theme (Default) */
+		--coffee-dark: var(--base-espresso);
+		--coffee-medium: var(--base-medium);
+		--coffee-light: var(--base-light);
+		--coffee-cream: var(--base-cream);
+		--coffee-foam: var(--base-foam);
+		--text-main: var(--base-black);
+		--text-light: var(--base-cream);
+	}
+
+	[data-theme="dark"] {
+		/* Dark Theme */
+		--coffee-dark: var(--base-cream);
+		--coffee-medium: var(--base-light);
+		--coffee-light: var(--base-medium);
+		--coffee-cream: var(--base-dark-bg);
+		--coffee-foam: var(--base-dark-surface);
+		--text-main: var(--base-cream);
+		--text-light: var(--base-black);
+	}
+	html {
+		font-family: 'Lato', sans-serif;
+		background: var(--coffee-cream);
+		color: var(--text-main);
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Lora', serif;
+		color: var(--coffee-dark);
+	}
+	.coffee-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	header {
+		padding: 2rem 0;
+		border-bottom: 2px solid var(--coffee-light);
+		margin-bottom: 2rem;
+	}
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.logo {
+		font-family: 'Lora', serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: var(--coffee-dark);
+		text-decoration: none;
+	}
+	.links {
+		display: flex;
+		align-items: center;
+	}
+	.links a {
+		margin-left: 1.5rem;
+		color: var(--coffee-medium);
+		text-decoration: none;
+		font-weight: 700;
+		transition: color 0.2s;
+	}
+	.links a:hover {
+		color: var(--coffee-dark);
+	}
+	#theme-toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: var(--coffee-medium);
+		padding: 0.5rem;
+		margin-left: 1rem;
+		display: flex;
+		align-items: center;
+	}
+	#theme-toggle:hover {
+		color: var(--coffee-dark);
+	}
+
+	/* Bean rotation based on theme */
+	.bean-icon {
+		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	[data-theme="dark"] .bean-icon {
+		transform: rotate(180deg);
+	}
+
+	/* Smooth transitions */
+	.theme-transition,
+	.theme-transition * {
+		transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+	}
+	main {
+		flex: 1;
+	}
+	footer {
+		margin-top: 4rem;
+		padding: 2rem 0;
+		text-align: center;
+		border-top: 1px solid var(--coffee-light);
+		color: var(--coffee-medium);
+		font-size: 0.9rem;
+	}
+
+	/* Utility classes for sections */
+	section {
+		margin-bottom: 4rem;
+		padding-top: 2rem; /* Offset for sticky header if we had one, or just spacing */
+	}
+
+	.section-title {
+		font-size: 2rem;
+		border-bottom: 3px solid var(--coffee-light);
+		display: inline-block;
+		margin-bottom: 1.5rem;
+		padding-bottom: 0.5rem;
+	}
+
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+</style>
